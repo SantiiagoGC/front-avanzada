@@ -1,0 +1,75 @@
+<div class="card p-5 mt-3 mb-3">
+ <form [formGroup]="registroForm" (ngSubmit)="registrar()" novalidate="" >
+
+    <img class="mb-4" src="../../../assets/imgs/register.png" alt="" width="50" height="50">
+    <h1 class="h3 mb-3 fw-normal">Registre sus datos</h1>
+
+    <div class="form-floating">
+      <input class="form-control" [ngClass]="{'is-invalid': registroForm.get('nombre')?.invalid && registroForm.get('nombre')?.dirty}" type="text"
+      formControlName="nombre" />
+      <label class="floatingInput" >Nombre: </label>
+    </div>
+
+    <br/>
+
+    <div class="form-floating">
+      <input class="form-control" [ngClass]="{'is-invalid': registroForm.get('cedula')?.invalid &&
+      registroForm.get('cedula')?.dirty}" type="text" formControlName="cedula" />
+      <label class="floatingInput" >Cedula: </label>
+    </div>
+
+    <br/>
+
+    <div class="form-floating">
+      <input class="form-control" [ngClass]="{'is-invalid': registroForm.get('nombreUsuario')?.invalid &&
+      registroForm.get('nombreUsuario')?.dirty}" type="text" formControlName="nombreUsuario" />
+      <label class="floatingInput" >Username: </label>
+    </div>
+
+    <br/>
+
+    <div class="form-floating">
+      <input class="form-control" [ngClass]="{'is-invalid': registroForm.get('email')?.invalid &&
+      registroForm.get('email')?.dirty}" type="email" formControlName="email" />
+      <label class="floatingInput" >Email: </label>
+    </div>
+
+    <br/>
+
+    <div class="mb-3 row">
+      <label class="col-sm-2 col-form-label" >Foto de perfil: </label>
+      <div class="col-sm-10">
+      <input class="form-control" type="file" formControlName="fotoPerfil" (change)="onFileChange($event)" />
+      </div>
+    </div>
+
+    <br/>
+
+    <div class="form-floating">
+      <input class="form-control" [ngClass]="{'is-invalid': registroForm.get('password')?.invalid &&
+      registroForm.get('password')?.dirty}" type="password" formControlName="password" />
+      <label class="floatingInput" >Password: </label>
+    </div>
+
+    <br/>
+
+    <div class="form-floating">
+      <input class="form-control" [ngClass]="{'is-invalid': registroForm.get('direccion')?.invalid &&
+      registroForm.get('direccion')?.dirty}" type="text" formControlName="direccion" />
+      <label class="floatingInput" >Dirección: </label>
+    </div>
+
+    <br/>
+
+    <div class="form-floating">
+      <input class="form-control" [ngClass]="{'is-invalid': registroForm.get('telefono')?.invalid &&
+      registroForm.get('telefono')?.dirty}" type="text" formControlName="telefono" />
+      <label class="floatingInput" >Celular: </label>
+    </div>
+
+    <br/>
+
+    <button [disabled]="registroForm.invalid" class="w-100 btn btn-lg btn-primary" type="submit">Registrarse</button>
+
+  </form>
+</div>

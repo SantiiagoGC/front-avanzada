@@ -1,0 +1,153 @@
+<div class="card p-4 mt-3 mb-3">
+  <div class="mb-3">
+    <button type="button" class="btn btn-success me-2" (click)="crear()" data-bs-toggle="modal"
+      data-bs-target="#crear"><i class="fa-solid fa-plus me-1"></i>
+      Crear</button>
+    <button type="button" class="btn btn-danger" [disabled]="seleccionados.length == 0" data-bs-toggle="modal"
+      data-bs-target="#borrar"><i class="fa-solid fa-trash me-1"></i> Eliminar
+      {{textoBtnEliminar}}</button>
+
+  </div>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Cedula</th>
+        <th>Nombre</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Foto</th>
+        <th>Celular</th>
+        <th>Dirección</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr *ngFor="let item of usuarios">
+        <td><input #check class="form-check-input" type="checkbox" (change)="seleccionar(item,
+          check.checked)" />
+        </td>
+        <td>
+          <p>{{item.cedula}}</p>
+        </td>
+        <td>
+          <p>{{item.nombre}}</p>
+        </td>
+        <td>
+          <p>{{item.nombreUsuario}}</p>
+        </td>
+        <td>
+          <p>{{item.correo}}</p>
+        </td>
+        <td><img [src]="item.fotoPerfil" width="60" /> </td>
+        <td>
+          <p>{{item.telefono}}</p>
+        </td>
+        <td>
+          <p>{{item.direccion}}</p>
+        </td>
+        <td>
+          <button type="button" class="btn btn-warning rounded-circle me-2" (click)="actualizar(item)"
+            data-bs-toggle="modal" data-bs-target="#crear"><i class="fa-solid fa-pen"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="modal fade" id="borrar" tabindex="-1" aria-labelledby="borrarModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="borrarModalLabel">Eliminar cliente</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>¿Está seguro que desea borrar los clientes seleccionados?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="borrarClientes()">Sí</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="crear" tabindex="-1" aria-labelledby="crearModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="crearModalLabel">{{btnTexto}} cliente, ingrese los datos.</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <form [formGroup]="clienteForm" (ngSubmit)="enviarDatos()">
+          <div class="form-floating">
+            <input class="form-control" [ngClass]="{'is-invalid': registroForm.get('nombre')?.invalid && registroForm.get('nombre')?.dirty}" type="text"
+            formControlName="nombre" />
+            <label class="floatingInput" >Nombre: </label>
+          </div>
+
+          <br/>
+
+          <div class="form-floating">
+            <input class="form-control" [ngClass]="{'is-invalid': registroForm.get('cedula')?.invalid &&
+            registroForm.get('cedula')?.dirty}" type="text" formControlName="cedula" />
+            <label class="floatingInput" >Cedula: </label>
+          </div>
+
+          <br/>
+
+          <div class="form-floating">
+            <input class="form-control" [ngClass]="{'is-invalid': registroForm.get('nombreUsuario')?.invalid &&
+            registroForm.get('nombreUsuario')?.dirty}" type="text" formControlName="nombreUsuario" />
+            <label class="floatingInput" >Username: </label>
+          </div>
+
+          <br/>
+
+          <div class="form-floating">
+            <input class="form-control" [ngClass]="{'is-invalid': registroForm.get('email')?.invalid &&
+            registroForm.get('email')?.dirty}" type="email" formControlName="email" />
+            <label class="floatingInput" >Email: </label>
+          </div>
+
+          <br/>
+
+          <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label" >Foto de perfil: </label>
+            <div class="col-sm-10">
+            <input class="form-control" type="file" formControlName="fotoPerfil" />
+            </div>
+          </div>
+
+          <br/>
+
+          <div class="form-floating">
+            <input class="form-control" [ngClass]="{'is-invalid': registroForm.get('direccion')?.invalid &&
+            registroForm.get('direccion')?.dirty}" type="text" formControlName="direccion" />
+            <label class="floatingInput" >Dirección: </label>
+          </div>
+
+          <br/>
+
+          <div class="form-floating">
+            <input class="form-control" [ngClass]="{'is-invalid': registroForm.get('telefono')?.invalid &&
+            registroForm.get('telefono')?.dirty}" type="text" formControlName="telefono" />
+            <label class="floatingInput" >Celular: </label>
+          </div>
+
+          <br/>
+
+          <button class="btn btn-primary"><i class="fa-solid fa-{{iconTexto}} me-1"></i>
+            {{btnTexto}}</button>
+        </form>
+        <br/>
+
+      </div>
+
+    </div>
+  </div>
+</div>
