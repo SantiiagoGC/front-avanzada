@@ -1,5 +1,5 @@
 export class UsuarioPost {
-  cedula:string = "";
+  cedula:number = 0;
   nombreUsuario:string = "";
   fotoPerfil:string = "";
   nombre:string = "";

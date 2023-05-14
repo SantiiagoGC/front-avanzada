@@ -41,7 +41,7 @@ export class GestionCiudadComponent implements OnInit {
 
   listar() {
     const usuario = new UsuarioGet();
-    usuario.cedula = "1010066053";
+    usuario.cedula = 1010066053;
     usuario.nombre = "Santiago Garcia";
     usuario.nombreUsuario = "Santii0628";
     usuario.correo = "Santii0628@gmail.com";

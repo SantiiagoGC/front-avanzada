@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioPost } from 'src/app/modelo/usuario-post';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/servicios/auth.service';
+import { ImagenService } from 'src/app/servicios/imagen.service';
+import { Alerta } from 'src/app/modelo/alerta';
 
 @Component({
   selector: 'app-registro',
@@ -9,12 +12,15 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class RegistroComponent {
 
+  imagenCliente!: string;
   registroForm!: FormGroup;
+  alerta!:Alerta;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private imagenService: ImagenService) {
     this.crearFormulario();
     //this.cliente = new UsuarioPost();
   }
+
 
   private crearFormulario() {
     this.registroForm = this.formBuilder.group({
@@ -25,14 +31,45 @@ export class RegistroComponent {
       password: new FormControl('', [Validators.required]),
       direccion: new FormControl('', [Validators.required]),
       telefono: new FormControl('', [Validators.required]),
-      fotoPerfil: new FormControl('', [Validators.required]),
     });
   }
 
- // cliente: UsuarioPost;
+  // cliente: UsuarioPost;
 
   public registrar(): void {
-    console.log(this.registroForm.value);
+    const objeto = this;
+    const formData = new FormData();
+    const cliente = this.convertirObjeto(this.registroForm.value);
+    console.log(cliente);
+      this.enviarInformacion(cliente);
+
+
+  }
+
+  private enviarInformacion(cliente: UsuarioPost) {
+    const objeto = this;
+    this.authService.registrarCliente(cliente).subscribe({
+      next(value) {
+        console.log(value);
+        objeto.alerta = new Alerta(value.respuesta, "success");
+      },
+      error(err) {
+        objeto.alerta = new Alerta(err.error.respuesta, "danger");
+        console.log(err);
+      },
+    });
+  }
+
+  private convertirObjeto(objeto: any): UsuarioPost {
+    const cliente = new UsuarioPost();
+    cliente.cedula = objeto["cedula"];
+    cliente.nombre = objeto["nombre"];
+    cliente.nombreUsuario = objeto["nombreUsuario"];
+    cliente.password = objeto["password"];
+    cliente.email = objeto["email"];
+    cliente.direccion = objeto["direccion"];
+    cliente.telefono = objeto["telefono"];
+    return cliente;
   }
 
   onFileChange(event: any) {

@@ -1,5 +1,5 @@
 export class UsuarioGet {
-  cedula:string = "";
+  cedula:number = 0;
   nombre:string = "";
   nombreUsuario:string = "";
   correo:string = "";
