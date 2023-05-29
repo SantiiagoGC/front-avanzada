@@ -7,22 +7,26 @@
         </svg>
       </a>
 
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a routerLink="" class="nav-link px-2 text-blue">Inicio</a></li>
-        <li><a routerLink="/personal" class="nav-link px-2 text-white">Perfil</a></li>
-        <li><a routerLink="/raro" class="nav-link px-2 text-white">Gestión ciudades</a></li>
-      </ul>
-
       <div *ngIf="!isLogged; then nologged else logged"></div>
 
       <ng-template #nologged>
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a routerLink="" class="nav-link px-2 text-blue">Inicio</a></li>
+        </ul>
         <div class="text-end">
           <button type="button" routerLink="/login" class="btn btn-success">Login  </button>
           <button type="button" routerLink="/registro" class="btn btn-warning">  Regitrarse</button>
         </div>
       </ng-template>
 
+<!--Probar esta monda-->
+
       <ng-template #logged>
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a routerLink="/personal" class="nav-link px-2 text-white">Perfil</a></li>
+          <li><a routerLink="/raro" class="nav-link px-2 text-white">Gestión ciudades</a></li>
+          <li><a routerLink="/crear_producto" class="nav-link px-2 text-white">Publicar producto</a></li>
+        </ul>
         <div class="text-end">
           <label class="me-3">Hola {{username}}</label>
           <button type="button" (click)="logout()" class="btn btn-warning">Logout</button>

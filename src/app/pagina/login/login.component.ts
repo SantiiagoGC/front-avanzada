@@ -47,12 +47,12 @@ export class LoginComponent {
     private enviarInformacion(cliente: LoginUser) {
       const objeto = this;
       this.authService.login(cliente).subscribe({
-        next(value) {
-        objeto.tokenService.login(value.respuesta.token);
+        next: data => {
+          objeto.tokenService.login(data.respuesta.token);
+          console.log(objeto.tokenService);
         },
-        error(err) {
-        objeto.alerta = new Alerta(err.error.respuesta, "danger");
-        },
-        });
-
-      }}
+        error: error => {
+          objeto.alerta = new Alerta (error.error.response, "danger");
+        }
+      });
+    }}

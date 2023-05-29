@@ -11,6 +11,7 @@ import { BusquedaComponent } from './pagina/busqueda/busqueda.component';
 import { GestionCiudadComponent } from './pagina/gestion-ciudad/gestion-ciudad.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AlertaComponent } from './pagina/alerta/alerta.component';
+import { CrearProductoComponent } from './pagina/crear-producto/crear-producto.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AlertaComponent } from './pagina/alerta/alerta.component';
     PersonalComponent,
     BusquedaComponent,
     GestionCiudadComponent,
-    AlertaComponent
+    AlertaComponent,
+    CrearProductoComponent
   ],
   imports: [
     BrowserModule,

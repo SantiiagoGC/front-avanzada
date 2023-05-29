@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UsuarioPost } from 'src/app/modelo/usuario-post';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/servicios/auth.service';
@@ -42,7 +42,6 @@ export class RegistroComponent {
     const cliente = this.convertirObjeto(this.registroForm.value);
     console.log(cliente);
       this.enviarInformacion(cliente);
-
 
   }
 

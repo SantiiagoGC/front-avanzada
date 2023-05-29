@@ -1,0 +1,54 @@
+<div class="card p-5 mt-3 mb-3">
+<form [formGroup]="registroForm" (ngSubmit)="registrar()" novalidate="">
+
+  <img class="mb-4" src="../../../assets/imgs/producto.png" alt="" width="80" height="80">
+    <h1 class="h3 mb-3 fw-normal">PUBLIQUE SU PRODUCTO :D</h1>
+
+  <div class="form-floating">
+    <input class="form-control" [ngClass]="{'is-invalid': registroForm.get('nombre')?.invalid && registroForm.get('nombre')?.dirty}" type="text" formControlName="nombre" />
+    <label class="floatingInput">Ingrese el nombre:</label>
+  </div>
+
+  <br/>
+
+  <div class="form-floating">
+    <input class="form-control" [ngClass]="{'is-invalid': registroForm.get('descripcion')?.invalid && registroForm.get('descripcion')?.dirty}" type="text" formControlName="descripcion" />
+    <label class="floatingInput">Ingrese una descripción:</label>
+  </div>
+
+  <br/>
+
+  <div class="form-floating">
+    <input class="form-control" [ngClass]="{'is-invalid': registroForm.get('precio')?.invalid && registroForm.get('precio')?.dirty}" type="number" formControlName="precio" />
+    <label class="floatingInput">Ingre un precio justo:</label>
+  </div>
+
+  <br/>
+
+  <div class="form-floating">
+    <input class="form-control" [ngClass]="{'is-invalid': registroForm.get('unidades')?.invalid && registroForm.get('unidades')?.dirty}" type="number" formControlName="unidades" />
+    <label class="floatingInput">Ingrese la cantidad:</label>
+  </div>
+
+  <br/>
+
+  <div class="form-floating">
+    <input class="form-control" [ngClass]="{'is-invalid': registroForm.get('cedulaVendedor')?.invalid && registroForm.get('cedulaVendedor')?.dirty}" type="number" formControlName="cedulaVendedor" />
+    <label class="floatingInput">Digite su cedula:</label>
+  </div>
+
+  <br/>
+
+  <select name="categoria" formControlName="codigoCategoria" required >
+    <option value="" selected >Seleccione una categoría</option>
+    <option [value]="i+1" *ngFor="let item of categorias; index as i" >{{item}}</option>
+  </select>
+
+  <br/>
+  <br/>
+
+  <button  class="w-100 btn btn-lg btn-primary" type="submit">Crear nuevo producto</button>
+  <app-alerta [alerta]="alerta"></app-alerta>
+
+</form>
+</div>

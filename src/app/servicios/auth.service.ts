@@ -17,8 +17,8 @@ export class AuthService {
     return this.http.post<MensajeDto>(`${this.authURL}/registro`, cliente);
   }
 
-  public login(loginUser: LoginUser): Observable<MensajeDto> {
-    return this.http.post<MensajeDto>(`${this.authURL}/login`, loginUser);
+  public login(sesion:LoginUser):Observable<MensajeDto>{
+    return this.http.post<MensajeDto>(`${this.authURL}/login`, sesion);
   }
 
 }
