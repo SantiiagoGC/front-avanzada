@@ -15,28 +15,37 @@ export class HomeComponent {
   productos: ProductGetDTO2[] = [];
   filtro: ProductGetDTO2[] = [];
   textoBusqueda: string;
+  contador: number = 2;
 
-  constructor(private productoService: ProductService, private route: ActivatedRoute) {
-    this.productos = this.productoService.listar();
+  constructor(private productoService: ProductService, private route: ActivatedRoute, private router: Router) {
+    // this.productos = this.productoService.listar();
     this.filtro = [];
 
     this.textoBusqueda = "";
     this.route.params.subscribe(params => {
       this.textoBusqueda = params["texto"];
-      this.filtro = this.productos.filter( p =>
-      p.nombre.toLowerCase().includes(this.textoBusqueda.toLowerCase()) );
-      });
+      this.filtro = this.productos.filter(p =>
+        p.nombre.toLowerCase().includes(this.textoBusqueda.toLowerCase()));
+    });
+  }
 
+  ngOnInit(): void {
+
+    this.productoService.listarAllProducts().subscribe({
+      next: data => {
+        this.productos = data.respuesta;
+        this.productos.forEach(producto => {
+          producto.id = this.contador;
+          this.contador++;
+        })
+      },
+      error: error => {
+        console.log(error.error.response);
+      }
+    });
+  }
+
+  verDetalleProducto(id: number) {
+    this.router.navigate(['/producto', id]);
+  }
 }
-
-}
-/*ngOnInit(): void {
-
-  /*this.productoService.listarAllProducts().subscribe({
-    next: data => {
-      this.productos = data.respuesta;
-    },
-    error: error => {
-      console.log(error.error.response);
-    }
-  })*/

@@ -35,7 +35,7 @@ export class AppComponent {
       }
     });
 
-    this.actualizarSesion( this.tokenService.isLogged(), this.tokenService.getUsername() );
+    this.actualizarSesion( this.tokenService.isLogged(), this.tokenService.getUsername()! );
   }
 
     private actualizarSesion(estado:boolean, username:string | null){

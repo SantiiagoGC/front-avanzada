@@ -23,12 +23,13 @@
 
       <ng-template #logged>
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a routerLink="" class="nav-link px-2 text-blue">Inicio</a></li>
           <li><a routerLink="/personal" class="nav-link px-2 text-white">Perfil</a></li>
           <li><a routerLink="/raro" class="nav-link px-2 text-white">Gestión ciudades</a></li>
           <li><a routerLink="/crear_producto" class="nav-link px-2 text-white">Publicar producto</a></li>
         </ul>
         <div class="text-end">
-          <label class="me-3">Hola {{username}}</label>
+          <label class="me-3">Bienvenido a UNIMARKET</label>
           <button type="button" (click)="logout()" class="btn btn-warning">Logout</button>
         </div>
       </ng-template>

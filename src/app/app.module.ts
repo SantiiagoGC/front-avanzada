@@ -12,6 +12,7 @@ import { GestionCiudadComponent } from './pagina/gestion-ciudad/gestion-ciudad.c
 import { HttpClientModule } from '@angular/common/http';
 import { AlertaComponent } from './pagina/alerta/alerta.component';
 import { CrearProductoComponent } from './pagina/crear-producto/crear-producto.component';
+import { ProductoComponent } from './pagina/producto/producto.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CrearProductoComponent } from './pagina/crear-producto/crear-producto.c
     BusquedaComponent,
     GestionCiudadComponent,
     AlertaComponent,
-    CrearProductoComponent
+    CrearProductoComponent,
+    ProductoComponent
   ],
   imports: [
     BrowserModule,

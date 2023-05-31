@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Alerta } from 'src/app/modelo/alerta';
 import { ProductPostDTO } from 'src/app/modelo/producto-post';
 import { ProductService } from 'src/app/servicios/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-producto',
@@ -17,7 +18,7 @@ export class CrearProductoComponent {
   registroForm!: FormGroup;
   alerta!:Alerta;
 
-  constructor(private formBuilder: FormBuilder, private producService: ProductService){
+  constructor(private router: Router, private formBuilder: FormBuilder, private producService: ProductService){
   this.crearFormulario();
   this.categorias = [];
   this.producto = new ProductPostDTO();

@@ -8,6 +8,7 @@ import { BusquedaComponent } from './pagina/busqueda/busqueda.component';
 import { GestionCiudadComponent } from './pagina/gestion-ciudad/gestion-ciudad.component';
 import { LoginGuard } from './guards/login.guard';
 import { CrearProductoComponent } from './pagina/crear-producto/crear-producto.component';
+import { ProductoComponent } from './pagina/producto/producto.component';
 
 const routes: Routes = [
 { path: "", component: HomeComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
 { path: "busqueda/:texto", component: BusquedaComponent },
 { path: "login", component: LoginComponent, canActivate: [LoginGuard] },
 { path: "registro", component: RegistroComponent, canActivate: [LoginGuard] },
+{ path: "producto/:id", component: ProductoComponent},
 { path: "**", pathMatch: "full", redirectTo: "" }
 ];
 @NgModule({

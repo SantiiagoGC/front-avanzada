@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { UsuarioPost } from '../modelo/usuario-post';
 import { MensajeDto } from '../modelo/mensaje-dto';
 import { LoginUser } from '../modelo/login-user';
+import { TokenDTO } from '../modelo/token-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,10 @@ export class AuthService {
 
   public login(sesion:LoginUser):Observable<MensajeDto>{
     return this.http.post<MensajeDto>(`${this.authURL}/login`, sesion);
+  }
+
+  public refresh(token:TokenDTO):Observable<MensajeDto>{
+    return this.http.post<MensajeDto>(`${this.authURL}/refresh`, token);
   }
 
 }

@@ -19,11 +19,10 @@ export class ProductService {
   constructor(private http: HttpClient) {
     this.productos = [];
     this.productos.push(new ProductGetDTO2(1, "Televisor LG 4K", 2, "Descripcion 1", 3500000,
-    1010066053, ["Rutas"] , 1));
+    1010066053, ["../../../assets/imgs/productos/LG.jpg"] , 1));
     this.productos.push(new ProductGetDTO2(2, "Tenis Nike", 4, "Descripcion 2", 650000,
-    1010066053, ["Rutas2"], 1));
+    1010066053, ["../../../assets/imgs/productos/Nike.jpg"], 1));
     //CREE OTROS PRODUCTOS (AL MENOS 6 MÁS)
-
    }
 
    public listar():ProductGetDTO2[]{
@@ -40,6 +39,10 @@ export class ProductService {
 
   public registrarProducto(producto: ProductPostDTO): Observable<MensajeDto> {
     return this.http.post<MensajeDto>(`${this.productUrl}/crear`, producto);
+  }
+
+  public getProduct(id: number): Observable<MensajeDto> {
+    return this.http.get<MensajeDto>(`${this.productUrl}/obtener/${id}`);
   }
 
 }

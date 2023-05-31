@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 order-md-1">
+      <img height="250" width="400" [src]="getImagenById()">
+    </div>
+    <div class="col-md-6 order-md-2">
+      <h2>Producto: {{ getNombreById() }}</h2>
+      <h2>Precio: $ {{ getPrecioById() }}</h2>
+      <h2>Hay disponibles: {{ getUnidadesById() }} unidades.</h2>
+      <h2>Categoria: {{ getCategoriasById() }}.</h2>
+      <p class="lead">
+        {{ getDescripcionById() }}
+      </p>
+
+      <div class="d-grid gap-3 col-10 mx-auto">
+        <button class="btn btn-primary" type="button">
+          Comprar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
