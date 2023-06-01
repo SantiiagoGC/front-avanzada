@@ -39,6 +39,14 @@
 
   <br/>
 
+  <div>
+    <label class="floatingInput">Imagen del producto: </label>
+    <br>
+    <input type="file" name="imagen" (change)="onFileChange($event)" />
+  </div>
+
+  <br/>
+
   <select name="categoria" formControlName="codigoCategoria" required >
     <option value="" selected >Seleccione una categoría</option>
     <option [value]="i+1" *ngFor="let item of categorias; index as i" >{{item}}</option>

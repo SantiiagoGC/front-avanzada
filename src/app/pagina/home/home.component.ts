@@ -35,7 +35,7 @@ export class HomeComponent {
       next: data => {
         this.productos = data.respuesta;
         this.productos.forEach(producto => {
-          producto.id = this.contador;
+          producto.id =
           this.contador++;
         })
       },

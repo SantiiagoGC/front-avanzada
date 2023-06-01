@@ -14,18 +14,22 @@
           <li><a routerLink="" class="nav-link px-2 text-blue">Inicio</a></li>
         </ul>
         <div class="text-end">
-          <button type="button" routerLink="/login" class="btn btn-success">Login  </button>
-          <button type="button" routerLink="/registro" class="btn btn-warning">  Regitrarse</button>
+          <button type="button" routerLink="/login" class="btn btn-success">Login </button>
+          <button type="button" routerLink="/registro" class="btn btn-warning"> Regitrarse</button>
         </div>
       </ng-template>
 
-<!--Probar esta monda-->
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" (submit)="iraBusqueda(textoBusqueda.value)">
+        <input #textoBusqueda type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..."
+          aria-label="Search">
+      </form>
+
+      <!--Probar esta monda-->
 
       <ng-template #logged>
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a routerLink="" class="nav-link px-2 text-blue">Inicio</a></li>
-          <li><a routerLink="/personal" class="nav-link px-2 text-white">Perfil</a></li>
-          <li><a routerLink="/raro" class="nav-link px-2 text-white">Gestión ciudades</a></li>
+          <li><a [routerLink]="['/personal', cedulaVendedor]" class="nav-link px-2 text-white">Perfil</a></li>
           <li><a routerLink="/crear_producto" class="nav-link px-2 text-white">Publicar producto</a></li>
         </ul>
         <div class="text-end">

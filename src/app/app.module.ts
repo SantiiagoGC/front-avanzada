@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AlertaComponent } from './pagina/alerta/alerta.component';
 import { CrearProductoComponent } from './pagina/crear-producto/crear-producto.component';
 import { ProductoComponent } from './pagina/producto/producto.component';
+import { CompraComponent } from './pagina/compra/compra.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ProductoComponent } from './pagina/producto/producto.component';
     GestionCiudadComponent,
     AlertaComponent,
     CrearProductoComponent,
-    ProductoComponent
+    ProductoComponent,
+    CompraComponent
   ],
   imports: [
     BrowserModule,

@@ -8,11 +8,12 @@
       <h2>Precio: $ {{ getPrecioById() }}</h2>
       <h2>Hay disponibles: {{ getUnidadesById() }} unidades.</h2>
       <h2>Categoria: {{ getCategoriasById() }}.</h2>
+      <h2>Vendedor: {{ getClienteNombre() }}.</h2>
       <p class="lead">
         {{ getDescripcionById() }}
       </p>
 
-      <div class="d-grid gap-3 col-10 mx-auto">
+      <div [routerLink]="['/compra', id]" class="d-grid gap-3 col-10 mx-auto">
         <button class="btn btn-primary" type="button">
           Comprar
         </button>

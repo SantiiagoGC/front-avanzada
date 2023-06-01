@@ -9,20 +9,22 @@ import { GestionCiudadComponent } from './pagina/gestion-ciudad/gestion-ciudad.c
 import { LoginGuard } from './guards/login.guard';
 import { CrearProductoComponent } from './pagina/crear-producto/crear-producto.component';
 import { ProductoComponent } from './pagina/producto/producto.component';
+import { CompraComponent } from './pagina/compra/compra.component';
 
 const routes: Routes = [
 { path: "", component: HomeComponent },
 { path: "home/:texto", component: HomeComponent },
 { path: "login", component: LoginComponent },
 { path: "registro", component: RegistroComponent },
-{ path: "personal", component: PersonalComponent },
+{ path: "personal/:cedulaVendedor", component: PersonalComponent },
 { path: "raro", component: GestionCiudadComponent },
 { path: "crear_producto", component: CrearProductoComponent },
 { path: "busqueda/:texto", component: BusquedaComponent },
 { path: "login", component: LoginComponent, canActivate: [LoginGuard] },
 { path: "registro", component: RegistroComponent, canActivate: [LoginGuard] },
 { path: "producto/:id", component: ProductoComponent},
-{ path: "**", pathMatch: "full", redirectTo: "" }
+{ path: "compra/:id", component: CompraComponent},
+{ path: "**", redirectTo: "", pathMatch: "full" } // Ruta comodín para redirigir a HomeComponent
 ];
 @NgModule({
 imports: [RouterModule.forRoot(routes)],

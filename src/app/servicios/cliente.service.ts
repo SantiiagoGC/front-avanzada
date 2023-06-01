@@ -22,6 +22,10 @@ export class ClienteService {
     return this.http.get<MensajeDto>(`${this.userUrl}/${cedula}`);
   }
 
+  public getPorEmail(email: string): Observable<MensajeDto> {
+    return this.http.get<MensajeDto>(`${this.userUrl}/buscar/${email}`);
+  }
+
   public search(valor: string): Observable<UsuarioGet[]> {
     return this.http.get<UsuarioGet[]>(`${this.userUrl}/search/${valor}`);
   }

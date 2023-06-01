@@ -6,6 +6,8 @@ import { CategoriaService } from 'src/app/servicios/categoria.service';
 import { ProductService } from 'src/app/servicios/product.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { UsuarioGet } from 'src/app/modelo/usuario-get';
+import { ClienteService } from 'src/app/servicios/cliente.service';
 
 @Component({
   selector: 'app-producto',
@@ -16,9 +18,17 @@ export class ProductoComponent implements OnInit {
   id: number = 0;
   producto: ProductGetDTO2 | undefined;
   categorias: CategoryDTO[] = [];
+  cliente: UsuarioGet = new UsuarioGet;
+  producto2: ProductGetDTO2 | undefined;
+  clienteConsultado: UsuarioGet | undefined;
 
-  constructor(private route: ActivatedRoute, private productService: ProductService,
-    private categoriaService: CategoriaService) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private productService: ProductService,
+    private categoriaService: CategoriaService,
+    private clienteService: ClienteService
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -34,7 +44,19 @@ export class ProductoComponent implements OnInit {
         console.log(error.error.response);
       }
     });
+  }
 
+  getClienteById(cedulaVendedor: number) {
+    this.clienteService.get(cedulaVendedor).subscribe({
+      next: data => {
+        this.cliente = data.respuesta;
+        this.clienteConsultado = this.cliente; // Guardar el cliente consultado en la variable clienteConsultado
+        console.log(this.cliente);
+      },
+      error: error => {
+        console.log(error.error.response);
+      }
+    });
   }
 
   getProductById(id: number) {
@@ -42,6 +64,11 @@ export class ProductoComponent implements OnInit {
       next: data => {
         this.producto = data.respuesta;
         console.log(this.producto);
+        if (this.producto?.cedulaVendedor) {
+          this.getClienteById(this.producto.cedulaVendedor);
+        } else {
+          console.log('La cédula del vendedor no está definida');
+        }
       },
       error: error => {
         console.log(error.error.response);
@@ -52,6 +79,13 @@ export class ProductoComponent implements OnInit {
   getImagenById() {
     if (this.producto) {
       return this.producto.rutasImagenes[0];
+    }
+    return '';
+  }
+
+  getId() {
+    if (this.producto) {
+      return this.producto.id;
     }
     return '';
   }
@@ -96,5 +130,11 @@ export class ProductoComponent implements OnInit {
     return '';
   }
 
+  getClienteNombre(){
+    return this.cliente.nombreUsuario;
+  }
 
+  verDetalleProducto(id: number) {
+    this.router.navigate(['/producto', id]);
+  }
 }

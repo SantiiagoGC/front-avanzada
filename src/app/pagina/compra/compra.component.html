@@ -1,0 +1,38 @@
+<div class="card p-5 mt-3 mb-3">
+  <form [formGroup]="registroForm" (ngSubmit)="registrar()" novalidate>
+
+    <img class="mb-4" src="../../../assets/imgs/comprar.png" alt="" width="50" height="50">
+    <h1 class="h3 mb-3 fw-normal">Registre sus datos</h1>
+
+    <div class="form-floating">
+      <input class="form-control" [ngClass]="{'is-invalid': registroForm.get('cedulaUsuario')?.invalid && registroForm.get('cedulaUsuario')?.dirty}" type="number" formControlName="cedulaUsuario" />
+      <label class="floatingInput">Cedula del usuario:</label>
+    </div>
+
+    <br/>
+
+    <div class="form-floating">
+      <input class="form-control" [ngClass]="{'is-invalid': registroForm.get('metodoPago')?.invalid && registroForm.get('metodoPago')?.dirty}" type="text" formControlName="metodoPago" />
+      <label class="floatingInput">Método de Pago:</label>
+    </div>
+
+    <br/>
+
+    <div class="form-floating">
+      <input class="form-control" [ngClass]="{'is-invalid': registroForm.get('unidades')?.invalid && registroForm.get('unidades')?.dirty}" type="number" formControlName="unidades" />
+      <label class="floatingInput">Cantidad:</label>
+    </div>
+
+    <br/>
+
+    <div class="form-floating">
+      <input formControlName="valorTotal" class="form-control" />
+      <label class="floatingInput">Valor Total:</label>
+    </div>
+
+    <br/>
+
+    <button [disabled]="registroForm.invalid" class="w-100 btn btn-lg btn-primary" type="submit">Finalizar compra</button>
+
+  </form>
+</div>

@@ -5,6 +5,7 @@ import { ProductGetDTO } from '../modelo/product-get-dto';
 import { ProductPostDTO } from '../modelo/producto-post';
 import { MensajeDto } from '../modelo/mensaje-dto';
 import { ProductGetDTO2 } from '../modelo/product-get-dto copy';
+import { CompraDTO } from '../modelo/compra-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,14 @@ export class ProductService {
 
   public getProduct(id: number): Observable<MensajeDto> {
     return this.http.get<MensajeDto>(`${this.productUrl}/obtener/${id}`);
+  }
+
+  public comprarProducto(unidades: number, codigoProducto: number, compra: CompraDTO): Observable<MensajeDto> {
+    return this.http.post<MensajeDto>(`${this.productUrl}/compra/${unidades}/${codigoProducto}`, compra);
+  }
+
+  public listProductByTitle(title: string): Observable<MensajeDto> {
+    return this.http.get<MensajeDto>(`${this.productUrl}/obtener_productos_titulo/${title}`);
   }
 
 }

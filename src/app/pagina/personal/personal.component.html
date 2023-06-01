@@ -1,1 +1,18 @@
-<p>personal works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12 my-3 pt-3 shadow">
+      <img height="250" width="300" [src]="getFotoById()" alt="imgen" class="float-left rounded-circle mr-2 ">
+      <h1>{{ getNombreById() }}</h1>
+      <h3>{{ getCorreoById() }}</h3>
+      <p>
+        <strong>Nombre de usuario: </strong>: {{getNombreUsuarioById()}}
+        <br>
+        <strong>Cedula: </strong>: {{ getCedulaById() }}
+        <br>
+        <strong>Dirrección: </strong>: {{getDireccionById()}}
+        <br>
+        <strong>Telefono: </strong>: {{ getTelefonoById() }}
+      </p>
+    </div>
+  </div>
+</div>

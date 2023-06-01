@@ -68,6 +68,7 @@ export class RegistroComponent {
     cliente.email = objeto["email"];
     cliente.direccion = objeto["direccion"];
     cliente.telefono = objeto["telefono"];
+    cliente.fotoPerfil = "https://picsum.photos/700/400?random";
     return cliente;
   }
 

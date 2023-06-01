@@ -66,7 +66,7 @@ export class CrearProductoComponent {
     producto.precio = objeto["precio"];
     producto.unidades = objeto["unidades"];
     producto.cedulaVendedor = objeto["cedulaVendedor"];
-    producto.rutasImagenes = objeto["rutasImagenes"];
+    producto.rutasImagenes = ["https://unsplash.com/es/s/fotos/random"];
     producto.codigoCategoria = objeto["codigoCategoria"];
     console.log(producto);
     return producto;
