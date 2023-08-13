@@ -1,4 +1,4 @@
-# Front bastante basico
+# Front bastante basico - Version precoz
 
 # MyApp
 
